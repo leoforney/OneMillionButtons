@@ -5,13 +5,15 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.futuremind.recyclerviewfastscroll.SectionTitleProvider;
+
 import java.util.List;
 
 /**
  * Created by Dynamic Signals on 2/4/2017.
  */
 
-public class RVAdapter extends RecyclerView.Adapter<RVAdapter.ViewHolder> {
+public class RVAdapter extends RecyclerView.Adapter<RVAdapter.ViewHolder> implements SectionTitleProvider {
 
     List<Integer> data;
 
@@ -36,6 +38,11 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.ViewHolder> {
             return data.size();
         }
         return 0;
+    }
+
+    @Override
+    public String getSectionTitle(int position) {
+        return "#" + data.get(position);
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

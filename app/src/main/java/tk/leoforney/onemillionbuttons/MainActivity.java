@@ -6,12 +6,15 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
+import com.futuremind.recyclerviewfastscroll.FastScroller;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
+    FastScroller fastScroller;
 
     List<Integer> numbers;
     int size = 100000;
@@ -23,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
+        fastScroller = (FastScroller) findViewById(R.id.fastscroll);
+
         recyclerView.setHasFixedSize(true);
 
         GridLayoutManager glm = new GridLayoutManager(this, 3);
@@ -39,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
 
         RVAdapter adapter = new RVAdapter(numbers);
         recyclerView.setAdapter(adapter);
+
+        fastScroller.setRecyclerView(recyclerView);
 
     }
 }
