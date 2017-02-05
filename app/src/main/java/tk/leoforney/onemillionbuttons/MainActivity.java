@@ -1,5 +1,6 @@
 package tk.leoforney.onemillionbuttons;
 
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -17,13 +18,17 @@ public class MainActivity extends AppCompatActivity {
     FastScroller fastScroller;
 
     List<Integer> numbers;
-    int size = 100000;
+    int size = 1000000;
     final static String TAG = MainActivity.class.getName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setNavigationBarColor(getResources().getColor(R.color.colorPrimaryDark));
+        }
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
         fastScroller = (FastScroller) findViewById(R.id.fastscroll);
