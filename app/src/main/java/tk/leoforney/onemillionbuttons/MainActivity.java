@@ -17,7 +17,6 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     FastScroller fastScroller;
 
-    List<Integer> numbers;
     int size = 1000000;
     final static String TAG = MainActivity.class.getName();
 
@@ -40,15 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView.setLayoutManager(glm);
 
-        numbers = new ArrayList<>(size);
-
-        for (int i = 0; i < size; i++) {
-            int buttonnum = i + 1;
-            numbers.add(buttonnum);
-        }
-
-        RVAdapter adapter = new RVAdapter(numbers);
-        recyclerView.setAdapter(adapter);
+        recyclerView.setAdapter(new RVAdapter(size));
 
         fastScroller.setRecyclerView(recyclerView);
 

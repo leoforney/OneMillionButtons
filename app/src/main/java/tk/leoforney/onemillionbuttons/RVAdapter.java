@@ -7,6 +7,7 @@ import android.widget.Button;
 
 import com.futuremind.recyclerviewfastscroll.SectionTitleProvider;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,8 +18,14 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.ViewHolder> implem
 
     List<Integer> data;
 
-    public RVAdapter(List<Integer> list) {
-        data = list;
+    public RVAdapter(int size) {
+
+        data = new ArrayList<>(size);
+
+        for (int i = 0; i < size; i++) {
+            int buttonnum = i + 1;
+            data.add(buttonnum);
+        }
     }
 
     @Override
